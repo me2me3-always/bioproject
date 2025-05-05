@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Support Cards with TTS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 40px;
+      background-color: #f5f5f5;
+      color: #222;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 32px;
+      color: #333;
+    }
+
+    .cards-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+      background-color: #fff;
+    }
+
+    .card-content h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .card-content p {
+      font-size: 14px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    .card-content a {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: #6f42c1;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .controls {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .voiceSelect {
+      width: 100%;
+      max-width: 100%;
+      font-size: 13px;
+      padding: 6px 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .controls button {
+      flex: 1 1 45%;
+      min-width: 80px;
+      padding: 6px 10px;
+      font-size: 13px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .speak { background-color: #6f42c1; color: white; }
+    .pause { background-color: #f0ad4e; color: white; }
+    .resume { background-color: #5bc0de; color: white; }
+    .stop { background-color: #d9534f; color: white; }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Support Resources for Cancer Patients 💖</h1>
+
+<div class="cards-container">
+  <!-- Card 1 -->
+  <div class="card">
+    <img src="war.jpg" alt="Flower icon for war zones">
+    <div class="card-content">
+      <a href="new.html"><h3>Cancer Patients Suffering In War Zones</h3></a>
+      <p class="text">The denied humanitarian aid is really heartbreaking. Your support can heal many people. Please check the links out 👩🏽‍🍼.</p>
+      <div class="controls">
+        <select class="voiceSelect"></select>
+        <button class="speak">🔊 Speak</button>
+        <button class="pause">⏸ Pause</button>
+        <button class="resume">▶ Resume</button>
+        <button class="stop">⏹ Stop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="card">
+    <img src="donation.jpg" alt="Dollar symbol for donations">
+    <div class="card-content">
+      <h3><a href="link4.html"><h3>Donation Links</h3></a>
+      <p class="text">We want to ease your financial needs. Please check the links below 💜.</p>
+      <div class="controls">
+        <select class="voiceSelect"></select>
+        <button class="speak">🔊 Speak</button>
+        <button class="pause">⏸ Pause</button>
+        <button class="resume">▶ Resume</button>
+        <button class="stop">⏹ Stop</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="card">
+    <img src="therapy2.jpg" alt="Therapist and client icon">
+    <div class="card-content">
+      <a href="link2.html"><h3>Free Therapy</h3></a>
+      <p class="text">We have the best interest in your mental health. So, we have psychologists and therapists around the world to help you with your cancer journey 🦋.</p>
+      <div class="controls">
+        <select class="voiceSelect"></select>
+        <button class="speak">🔊 Speak</button>
+        <button class="pause">⏸ Pause</button>
+        <button class="resume">▶ Resume</button>
+        <button class="stop">⏹ Stop</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+ <!-- Card 3 -->
+  <div class="card">
+    <img src="pic2.jpg" alt="Therapist and client icon">
+    <div class="card-content">
+      <a href="link3.html"><h3>Community Page</h3></a>
+      <p class="text">Those who feel supported report better quality of life and wellbeing. If cancer comes, having friends and family capable of supporting you will provide “resources” to cope with stress, emotional turmoil, and all that comes with receiving cancer treatment and the lengthy recovery thereafter.</p>
+      <div class="controls">
+        <select class="voiceSelect"></select>
+        <button class="speak">🔊 Speak</button>
+        <button class="pause">⏸ Pause</button>
+        <button class="resume">▶ Resume</button>
+        <button class="stop">⏹ Stop</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+<script>
+  const synth = window.speechSynthesis;
+  let voices = [];
+
+  function populateVoiceList() {
+    voices = synth.getVoices();
+    document.querySelectorAll('.voiceSelect').forEach(select => {
+      select.innerHTML = '';
+      voices.forEach((voice, i) => {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `${voice.name} - ${voice.lang}`;
+        select.appendChild(option);
+      });
+    });
+  }
+
+  populateVoiceList();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+  }
+
+  document.querySelectorAll('.card').forEach(card => {
+    const speakBtn = card.querySelector('.speak');
+    const pauseBtn = card.querySelector('.pause');
+    const resumeBtn = card.querySelector('.resume');
+    const stopBtn = card.querySelector('.stop');
+    const voiceSelect = card.querySelector('.voiceSelect');
+    const text = card.querySelector('.text').textContent;
+
+    let utterance;
+
+    speakBtn.addEventListener('click', () => {
+      if (utterance) synth.cancel();  // Stop previous utterance
+      utterance = new SpeechSynthesisUtterance(text);
+      const selectedVoice = voices[voiceSelect.value];
+      if (selectedVoice) utterance.voice = selectedVoice;
+      synth.speak(utterance);
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      if (synth.speaking && !synth.paused) {
+        synth.pause();
+      }
+    });
+
+    resumeBtn.addEventListener('click', () => {
+      if (synth.paused) {
+        synth.resume();
+      }
+    });
+
+    stopBtn.addEventListener('click', () => {
+      synth.cancel();
+    });
+  });
+</script>
+
+</body>
+</html>
+

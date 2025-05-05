@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/4646/4646577.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Psy-Onco Wellness</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-image: url('dna.gif');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #FFA726;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+    }
+
+    .btn-orange {
+      background: #FFA726;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 60px 40px 30px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .content {
+      max-width: 600px;
+    }
+
+    .content h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #1a237e;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .content p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #1a237e;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      color: black;
+      width: 100%;
+      max-width: 360px;
+      align-self: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h3 {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
+
+    .form-container input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-container button {
+      width: 100%;
+      background-color: #009688;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .speech-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+      margin: 60px auto 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      gap: 10px;
+    }
+
+    .speech-controls select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .speech-controls div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .speak-btn,
+    .pause-btn,
+    .resume-btn,
+    .stop-btn {
+      flex: 1 1 120px;
+    }
+
+    .pause-btn {
+      background-color: #FFA726;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .resume-btn {
+      background-color: #4FC3F7;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .stop-btn {
+      background-color: #E53935;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .form-container {
+        margin-top: 20px;
+      }
+    }
+
+    .content-box {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      max-width: 600px;
+      width: 100%;
+      color: #1a237e;
+    }
+
+    .wave-separator {
+      position: relative;
+      width: 100%;
+      height: 80px;
+      overflow: hidden;
+      margin-top: -10px;
+    }
+
+    .wave-separator svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+      <span>Psy-Onco<span style="color:#b8b8f2;">Wellness</span></span>
+      <img src="ribbon2.png" alt="Health Emoji" style="height: 28px;" />
+    </div>
+    <nav>
+      <a href="links.html">Home</a>
+      <a href="aboutus.html">About Us</a>
+      <a href="link3.html">Services</a>
+      <a href="sumed.pdf">Pages</a>
+      <a href="cancer.pdf">Blog</a>
+    </nav>
+    <a href="contact.html"><button class="btn-orange">Contact Us</button></a>
+  </header>
+
+  <!-- 🎨 Wavy Line Divider -->
+  <div class="wave-separator">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#ffffff"></path>
+    </svg>
+  </div>
+
+  <section class="main">
+    <div class="content-box">
+      <h1>Understanding the Psychological Impact of Cancer – A Student Initiative</h1><br>
+      <p>
+        Cancer is not just a physical illness—it affects the mind and <br>heart just as deeply. Through this website, we aim to shed light on the emotional and psychological challenges faced by cancer patients, something that often remains hidden behind the medical treatments.
+        <br><br>
+        As students, we believe that empathy, awareness, and support can make a real difference. This project is our small step towards understanding the emotional struggles that come with cancer and how we, as young changemakers, can help. From research-based insights to emotional support initiatives, we’re committed to learning, sharing, and making a positive impact.
+        <br><br>
+        Join us as we explore, learn, and stand beside those fighting a battle that’s more than skin deep.
+      </p><br>
+      <button class="btn-orange">See Services</button>
+    </div>
+
+    <div class="form-container">
+      <h3>Book Now</h3>
+      <input type="text" placeholder="First Name" />
+      <input type="text" placeholder="Last Name" />
+      <input type="text" placeholder="Address" />
+      <input type="text" placeholder="Phone No." />
+      <button>Book Appointment</button>
+    </div>
+  </section>
+
+  <div class="speech-controls">
+    <select id="voiceSelect"></select>
+    <div>
+      <button class="speak-btn" onclick="speakText()">🔊 Speak</button>
+      <button class="pause-btn" onclick="pauseSpeech()">⏸ Pause</button>
+      <button class="resume-btn" onclick="resumeSpeech()">▶️ Resume</button>
+      <button class="stop-btn" onclick="stopSpeech()">🟥 Stop</button>
+    </div>
+  </div>
+
+  <script>
+    let synth = window.speechSynthesis;
+    let utterance = null;
+    let voices = [];
+
+    const voiceSelect = document.getElementById('voiceSelect');
+
+    function populateVoices() {
+      voices = synth.getVoices();
+      voiceSelect.innerHTML = '';
+      voices.forEach((voice, index) => {
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
+      });
+    }
+
+    populateVoices();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = populateVoices;
+    }
+
+    function speakText() {
+      stopSpeech();
+      const text = document.querySelector('.content-box').innerText;
+      if (!text) return;
+      utterance = new SpeechSynthesisUtterance(text);
+      utterance.voice = voices[voiceSelect.value];
+      synth.speak(utterance);
+    }
+
+    function pauseSpeech() {
+      if (synth.speaking && !synth.paused) {
+        synth.pause();
+      }
+    }
+
+    function resumeSpeech() {
+      if (synth.paused) {
+        synth.resume();
+      }
+    }
+
+    function stopSpeech() {
+      if (synth.speaking) {
+        synth.cancel();
+      }
+    }
+  </script>
+</body>
+</html>
+

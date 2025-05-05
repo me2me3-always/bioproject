@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free Therapy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e9fce9;
+      color: #2e4d2f;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #388e3c;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #3d3d3d;
+      text-align: justify;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      text-align: center;
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
+
+    .tts-controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .tts-controls select,
+    .tts-controls button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s;
+    }
+
+    .tts-controls select {
+      min-width: 280px;
+    }
+
+    .tts-controls button:hover {
+      transform: scale(1.05);
+    }
+
+    .speak { background-color: #6f42c1; color: white; }
+    .pause { background-color: #f0ad4e; color: white; }
+    .resume { background-color: #5bc0de; color: white; }
+    .stop { background-color: #d9534f; color: white; }
+  </style>
+</head>
+<body>
+
+  <div class="about-container">
+    <h1>Supporting Community for Cancer Patients</h1>
+
+    <!-- Voice Controls -->
+    <div class="tts-controls">
+      <select id="voiceSelect" title="Select a voice">
+        <option value="">Loading voices...</option>
+      </select>
+      <button class="speak" title="Start speaking">🔊 Speak</button>
+      <button class="pause" title="Pause speech">⏸ Pause</button>
+      <button class="resume" title="Resume speech">▶ Resume</button>
+      <button class="stop" title="Stop speech">⏹ Stop</button>
+    </div>
+
+        
+    <p><strong style="color: #2e7d32;"><a href="https://www.cancersupportcommunity.org/">Cancer Support Community</a></strong></p>
+         <b><u><p> tel:(888) 793-9355</p></b></u>
+    <p>
+      Social support is regarded as a complex construct which has long been suggested to have direct and buffering effects on patients' wellbeing and emotional adjustment to cancer. Cross-sectional and prospective studies show a positive association between perceived social support and psychological adjustment following cancer treatment. Research findings suggest that the evidence for the relationship between social support and cancer progression is sufficiently strong.
+    </p>
+
+    <p>
+      The diagnosis and treatment of cancer can be an isolating experience. The challenge is how to mobilize yourself and those around you to help make it less so. Friends and family are the starting point. For those with few relationships, professionals, peers, and groups of other patients may provide solace and support. Here we discuss connections we have to others (our social network), the many benefits of support, and strategies for enhancing support to aid in coping with cancer.
+    </p>
+
+<p>
+
+<p> <a href="peersupport.html">
+<b>Our Community Server - Hope Circle</a><p></b>
+
+<img src="helpline.jpg" alt="number" align="center">
+
+
+</p>
+
+    </div>
+  </div>
+
+  <!-- Voice Script -->
+  <script>
+    const synth = window.speechSynthesis;
+    const speakBtn = document.querySelector('.speak');
+    const pauseBtn = document.querySelector('.pause');
+    const resumeBtn = document.querySelector('.resume');
+    const stopBtn = document.querySelector('.stop');
+    const voiceSelect = document.getElementById('voiceSelect');
+
+    let voices = [];
+    let utterance = null;
+
+    function populateVoices() {
+      voices = synth.getVoices();
+      voiceSelect.innerHTML = '';
+      voices.forEach((voice, i) => {
+        const option = document.createElement('option');
+        option.value = i;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
+      });
+    }
+
+    // Call initially and when voices change
+    populateVoices();
+    if (synth.onvoiceschanged !== undefined) {
+      synth.onvoiceschanged = populateVoices;
+    }
+
+    speakBtn.addEventListener('click', () => {
+      const content = document.querySelector('.about-container').innerText;
+      if (synth.speaking) {
+        synth.cancel(); // Cancel ongoing speech
+      }
+
+      utterance = new SpeechSynthesisUtterance(content);
+      const selectedIndex = voiceSelect.value;
+      if (voices[selectedIndex]) {
+        utterance.voice = voices[selectedIndex];
+      }
+      synth.speak(utterance);
+    });
+
+    pauseBtn.addEventListener('click', () => {
+      if (synth.speaking && !synth.paused) synth.pause();
+    });
+
+    resumeBtn.addEventListener('click', () => {
+      if (synth.paused) synth.resume();
+    });
+
+    stopBtn.addEventListener('click', () => {
+      if (synth.speaking) synth.cancel();
+    });
+  </script>
+
+</body>
+</html>
+

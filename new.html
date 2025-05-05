@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cancer Patients in War Zones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e9fce9;
+      color: #2e4d2f;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #388e3c;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #3d3d3d;
+      text-align: justify;
+    }
+
+    .footer-note {
+      margin-top: 30px;
+      text-align: center;
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
+
+    .footer-note a {
+      text-decoration: none;
+      color: #2e7d32;
+    }
+
+    .speech-controls {
+      text-align: center;
+      margin: 40px auto;
+    }
+
+    .speech-controls select,
+    .speech-controls button {
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .speech-controls select {
+      background-color: white;
+      color: #2e4d2f;
+      border: 2px solid #388e3c;
+    }
+
+    .speech-controls button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="about-container" id="about-text">
+    <h1>Cancer Patients Suffering in the War Zones</h1>
+    <p>
+     <br> Cancer patients in Gaza urgently need basic health care services—a situation further complicated by restrictions on essential medical supplies, including chemotherapy drugs. The Turkish-Palestinian Friendship Hospital, the sole facility in Gaza specializing in treating cancer, has closed because of frequent Israeli attacks and a lack of fuel and medical supplies.</br>
+
+      <br>The deaths of at least 12 cancer patients were documented 10 days following its closure. Despite some international efforts to evacuate cancer patients, of Gaza’s estimated 10,000 cancer patients, approximately 3,800 have been granted permission to leave. However, in reality, only around 600 have been evacuated since the start of the war.</br>
+      
+     <br> Thousands of Palestinians with cancer are trapped by Israel's blockade, denied treatment abroad, and left to die as the world looks away.</br>
+      
+    <br>  Not only Palestine, but countries like Syria, Yemen, Democratic Republic Of Congo and many more who have citizens suffering with the misery of cancer but have no humanitarian aid, healthcare facilities and basic resources. With the wars actively going on, people are exposed to carcinogens every single day and the risk of cancer increases in everyone, including babies and pregnant women.</br>
+
+     <br> A donation to them equals a donation for their survival. Every $1 equals aid for a child with cancer. Your humanity helps these citizens.</br>
+    </p>
+
+    <div class="footer-note">
+      <a href="https://help.unicef.org/ob/donate-to-children" target="_blank">UNICEF Link for Palestinians</a>
+    </div>
+    <div class="footer-note">
+      <a href="https://www.globalgiving.org/projects/war-in-ukraine-help-children-with-cancer/" target="_blank">Global Giving Link for Ukrainians</a>
+    </div>
+  </div>
+
+  <!-- Text-to-Speech Controls -->
+  <div class="speech-controls">
+    <label for="voiceSelect">🗣️ Choose Voice / Accent:</label><br>
+    <select id="voiceSelect">
+      <option value="">Loading voices...</option>
+    </select>
+    <br><br>
+    <button onclick="speakText()">🔊 Speak</button>
+    <button onclick="pauseSpeech()">⏸ Pause</button>
+    <button onclick="resumeSpeech()">▶️ Resume</button>
+    <button onclick="stopSpeech()">🟥 Stop</button>
+  </div>
+
+  <script>
+    let utterance;
+    let voices = [];
+
+    function populateVoiceList() {
+      voices = speechSynthesis.getVoices();
+      const voiceSelect = document.getElementById("voiceSelect");
+      voiceSelect.innerHTML = "";
+
+      voices.forEach((voice, i) => {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
+      });
+    }
+
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+
+    function speakText() {
+      const text = document.getElementById("about-text").innerText;
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+      utterance = new SpeechSynthesisUtterance(text);
+
+      const selectedVoiceIndex = document.getElementById("voiceSelect").value;
+      if (voices[selectedVoiceIndex]) {
+        utterance.voice = voices[selectedVoiceIndex];
+      }
+
+      speechSynthesis.speak(utterance);
+    }
+
+    function pauseSpeech() {
+      if (speechSynthesis.speaking && !speechSynthesis.paused) {
+        speechSynthesis.pause();
+      }
+    }
+
+    function resumeSpeech() {
+      if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+      }
+    }
+
+    function stopSpeech() {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    }
+
+    window.onload = populateVoiceList;
+  </script>
+
+</body>
+</html>

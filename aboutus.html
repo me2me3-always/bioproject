@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Mental Wellness for Cancer Patients</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #e9fce9;
+      color: #2e4d2f;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 60px auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #388e3c;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 1.15rem;
+      color: #3d3d3d;
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      text-align: center;
+      font-weight: bold;
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
+
+    .speech-controls {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .speech-controls select,
+    .speech-controls button {
+      background-color: #388e3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .speech-controls select {
+      background-color: white;
+      color: #2e4d2f;
+      font-weight: bold;
+      border: 2px solid #388e3c;
+    }
+
+    .speech-controls button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="about-container" id="about-text">
+    <h1>💖 About Us</h1>
+    <p>
+      We’re a group of school students from JSS Private School,Dubai brought together by a shared purpose — to bring comfort, hope, and healing to those bravely fighting cancer. 💪 We may still be young, but we believe that kindness, empathy, and technology can create powerful change — especially when it’s needed most.
+    </p>
+    <p>
+      Through our project, we’re building gentle digital tools that support mental well-being during life’s toughest moments. 🌿 Whether it’s a calming voice when the world feels loud, a garden that grows with your emotions, or a space to journal your thoughts — everything we create is designed to help you breathe a little easier and smile a little more. 😊
+    </p>
+    <p>
+      We know cancer doesn’t just affect the body — it touches the heart and mind too. That’s why we’re here: to remind you that <strong>you’re never alone</strong>. 💫 Every feature in our app carries love, strength, and a small spark of joy — because even on the hardest days, you deserve to feel supported, valued, and seen. 💌✨
+    </p>
+
+35–40% of cancer patients have a diagnosable psychiatric disorder according to ICD-10 criteria.<br> Which undoubtedly has a deleterious impact on their quality of life while also increasing healthcare costs.
+</p>
+
+<div style="text-align: center; margin: 30px 0;">
+  <img src="imgau.jpg" alt="How Cancer Affects Mental Health" style="max-width: 100%; height: auto; border-radius: 12px;">
+</div>
+    <p>
+      Love and support do not discriminate. So, we have added donation links for your healthcare and facilities.<br>
+      To accommodate your needs regardless of the money in your pocket🌷.
+    </p>
+    <div class="footer-note">
+      From our hearts to yours,<br>
+      — With hope, warmth, and unwavering belief in your strength 🌈🌻
+    </div>
+  </div>
+
+  <!-- Text-to-Speech Controls -->
+  <div class="speech-controls">
+    <label for="voiceSelect">
+      🗣️ Choose Voice / Accent:
+    </label><br>
+    <select id="voiceSelect">
+      <option value="">Loading voices...</option>
+    </select>
+    <br><br>
+    <button onclick="speakText()">🔊 Speak</button>
+    <button onclick="pauseSpeech()">⏸ Pause</button>
+    <button onclick="resumeSpeech()">▶️ Resume</button>
+    <button onclick="stopSpeech()">🟥 Stop</button>
+  </div>
+
+  <script>
+    let utterance;
+    let voices = [];
+
+    function populateVoiceList() {
+      voices = speechSynthesis.getVoices();
+      const voiceSelect = document.getElementById("voiceSelect");
+      voiceSelect.innerHTML = "";
+
+      voices.forEach((voice, i) => {
+        const option = document.createElement("option");
+        option.value = i;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        voiceSelect.appendChild(option);
+      });
+    }
+
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+
+    function speakText() {
+      const text = document.getElementById("about-text").innerText;
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+      utterance = new SpeechSynthesisUtterance(text);
+
+      const selectedVoiceIndex = document.getElementById("voiceSelect").value;
+      if (voices[selectedVoiceIndex]) {
+        utterance.voice = voices[selectedVoiceIndex];
+      }
+
+      speechSynthesis.speak(utterance);
+    }
+
+    function pauseSpeech() {
+      if (speechSynthesis.speaking && !speechSynthesis.paused) {
+        speechSynthesis.pause();
+      }
+    }
+
+    function resumeSpeech() {
+      if (speechSynthesis.paused) {
+        speechSynthesis.resume();
+      }
+    }
+
+    function stopSpeech() {
+      if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+      }
+    }
+
+    window.onload = populateVoiceList;
+  </script>
+
+</body>
+</html>
+
