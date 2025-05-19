@@ -220,6 +220,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo" style="display: flex; align-items: center; gap: 8px;">
@@ -229,9 +230,10 @@
     <nav>
       <a href="links.html">Home</a>
       <a href="aboutus.html">About Us</a>
-      <a href="services.html">Services</a>
+      <a href="link3.html">Services</a>
       <a href="sumed.pdf">Pages</a>
       <a href="cancer.pdf">Blog</a>
+      <a href="women.html">Female Helpline</a>
     </nav>
     <a href="contact.html"><button class="btn-orange">Contact Us</button></a>
   </header>
@@ -289,7 +291,7 @@
       voices.forEach((voice, index) => {
         const option = document.createElement('option');
         option.value = index;
-        option.textContent = `${voice.name} (${voice.lang})`;
+        option.textContent = ${voice.name} (${voice.lang});
         voiceSelect.appendChild(option);
       });
     }
@@ -327,5 +329,4 @@
     }
   </script>
 </body>
-</html>
-
+</html>  
